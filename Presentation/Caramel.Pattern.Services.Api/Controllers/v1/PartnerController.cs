@@ -199,5 +199,21 @@ namespace Caramel.Pattern.Services.Api.Controllers.v1
 
             return NoContent();
         }
+
+        /// <summary>
+        /// Busca a Imagem de Perfil do Parceiro em Base64.
+        /// </summary>
+        /// <param name="partnerId">O ID do Parceiro a ser Deletado.</param>
+        /// <returns>Retorna a Imagem de Perfil do Parceiro em Base64 ou vazio.</returns>
+        [HttpGet("/users-control/partners/{partnerId}/base64")]
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> GetPartnerImageBase64(string partnerId)
+        {
+            var base64Image = await _service.GetImageBase64(partnerId);
+
+            return Ok(new { base64Image });
+        }
     }
 }
