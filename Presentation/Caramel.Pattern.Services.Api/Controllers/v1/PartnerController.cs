@@ -213,7 +213,9 @@ namespace Caramel.Pattern.Services.Api.Controllers.v1
         {
             var base64Image = await _service.GetImageBase64(partnerId);
 
-            return Ok(new { base64Image });
+            var response = new CustomResponse<object>(new { base64Image }, StatusProcess.Success);
+
+            return Ok(response);
         }
     }
 }
