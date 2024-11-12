@@ -396,3 +396,5 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/Presentation/Caramel.Pattern.Services.Api/appsettings.Production.json
+/Presentation/Caramel.Pattern.Services.Api/appsettings.Development.json
