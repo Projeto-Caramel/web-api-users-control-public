@@ -23,6 +23,11 @@ jobs:
       run: dotnet test --no-build --verbosity normal
     - name: Publish
       run: dotnet publish -c Release -o ./publish
+    - name: Upload Publish Directory as Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: publish-artifact
+        path: ./publish
 
   Deploy:
 
@@ -30,27 +35,32 @@ jobs:
     needs: Integration
 
     steps:
-    - name: Checkout code 
-      uses: actions/checkout@v4
+    - name: Download Publish Artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: publish-artifact
+        path: ./publish
     - name: Set up .NET
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '8.0.x'
     - name: Install Lambda Tools
       run: dotnet tool install -g Amazon.Lambda.Tools
-    - name: Substituir arquivos de configuração
-      run: |
-        sed -i 's/SECRET-PRD/${{ secrets.CONNECTION_STRING_PRD }}/g' ./publish/appsettings.Production.json
-        sed -i 's/SECRET-PRD/${{ secrets.ENCRYPTION_KEY_PRD }}/g' ./publish/appsettings.Production.json
-        sed -i 's/SECRET-PRD/${{ secrets.JWT_KEY_PRD }}/g' ./publish/appsettings.Production.json
-        sed -i 's/SECRET-PRD/${{ secrets.JWT_ISSUER_PRD }}/g' ./publish/appsettings.Production.json
-        sed -i 's/SECRET-PRD/${{ secrets.EMAIL_ACCESS_KEY_PRD }}/g' ./publish/appsettings.Production.json
-        sed -i 's/SECRET-PRD/${{ secrets.EMAIL_SECRET_KEY_PRD }}/g' ./publish/appsettings.Production.json
-        sed -i 's/SECRET-PRD/${{ secrets.BUCKET_ACCESS_KEY_PRD }}/g' ./publish/appsettings.Production.json
-        sed -i 's/SECRET-PRD/${{ secrets.BUCKET_SECRET_KEY_PRD }}/g' ./publish/appsettings.Production.json
-        sed -i 's/SECRET-PRD/${{ secrets.BUCKET_NAME_PRD }}/g' ./publish/appsettings.Production.json
-    - name: Publish .NET project
-      run: dotnet publish -c Release -o ./publish
+    - name: App Settings Variable Substitution
+      uses: microsoft/variable-substitution@v1
+      with:
+        files: './publish/appsettings.Production.json'
+      env:
+        MongoDBSettings.ConnectionString: ${{ secrets.CONNECTION_STRING_PRD }}
+        EncryptionKey: ${{ secrets.ENCRYPTION_KEY_PRD }}
+        Jwt.Key: ${{ secrets.JWT_KEY_PRD }}
+        Jwt.Issuer: ${{ secrets.JWT_ISSUER_PRD }}
+        EmailSettings.AccessKey: ${{ secrets.EMAIL_ACCESS_KEY_PRD }}
+        EmailSettings.SecretKey: ${{ secrets.EMAIL_SECRET_KEY_PRD }}
+        APIs.AuthUrl: ${{ secrets.AUTH_URL_PRD }}
+        BucketSettings.AccessKey: ${{ secrets.BUCKET_ACCESS_KEY_PRD }}
+        BucketSettings.SecretKey: ${{ secrets.BUCKET_SECRET_KEY_PRD }}
+        BucketSettings.BucketName: ${{ secrets.BUCKET_NAME_PRD }}
     - name: Deploy to AWS Lambda
       env: 
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_PRD }}
