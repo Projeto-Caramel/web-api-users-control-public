@@ -1,0 +1,497 @@
+{
+  "root_group": {
+    "name": "",
+    "path": "",
+    "id": "d41d8cd98f00b204e9800998ecf8427e",
+    "groups": [
+      {
+        "path": "::Load Test for Get Partners Endpoint",
+        "id": "2cfa52b9d14f992e4d70ded6c02099fa",
+        "groups": [],
+        "checks": [
+            {
+              "name": "status is 200 (getPartners)",
+              "path": "::Load Test for Get Partners Endpoint::status is 200 (getPartners)",
+              "id": "0f032c0e67e1de420950066e8ee270b2",
+              "passes": 873,
+              "fails": 0
+            },
+            {
+              "name": "response time is less than 4000ms (getPartners)",
+              "path": "::Load Test for Get Partners Endpoint::response time is less than 4000ms (getPartners)",
+              "id": "fb81566e99f93248855136dbf6276ccb",
+              "passes": 873,
+              "fails": 0
+            }
+          ],
+        "name": "Load Test for Get Partners Endpoint"
+      },
+      {
+        "checks": [
+          {
+            "name": "status is 200 (getPartnerById)",
+            "path": "::Load Test for Get Partner by ID Endpoint::status is 200 (getPartnerById)",
+            "id": "d2ac09a9051aa8ab1a473e78fd6e39fd",
+            "passes": 873,
+            "fails": 0
+          },
+          {
+            "fails": 0,
+            "name": "response time is less than 4000ms (getPartnerById)",
+            "path": "::Load Test for Get Partner by ID Endpoint::response time is less than 4000ms (getPartnerById)",
+            "id": "d65902403f53c0fd572c4fef9ea4caaf",
+            "passes": 873
+          }
+        ],
+        "name": "Load Test for Get Partner by ID Endpoint",
+        "path": "::Load Test for Get Partner by ID Endpoint",
+        "id": "dce18af48a9ad3fa48f29640830805ae",
+        "groups": []
+      },
+      {
+        "name": "Load Test for Get Partner by Email Endpoint",
+        "path": "::Load Test for Get Partner by Email Endpoint",
+        "id": "5fbae657ba7568cf38a904ba021ed2ba",
+        "groups": [],
+        "checks": [
+            {
+              "id": "960ab2988b83e3300dcee43f024a9694",
+              "passes": 873,
+              "fails": 0,
+              "name": "status is 200 (getPartnerByEmail)",
+              "path": "::Load Test for Get Partner by Email Endpoint::status is 200 (getPartnerByEmail)"
+            },
+            {
+              "passes": 873,
+              "fails": 0,
+              "name": "response time is less than 4000ms (getPartnerByEmail)",
+              "path": "::Load Test for Get Partner by Email Endpoint::response time is less than 4000ms (getPartnerByEmail)",
+              "id": "ab1e41e24e5b558dc3a64a753829ad7d"
+            }
+          ]
+      },
+      {
+        "name": "Load Test for Get Partner Filtered Endpoint",
+        "path": "::Load Test for Get Partner Filtered Endpoint",
+        "id": "e2999332c7cca5d081341dc402b3192f",
+        "groups": [],
+        "checks": [
+            {
+              "name": "status is 200 (getPartnerFiltered)",
+              "path": "::Load Test for Get Partner Filtered Endpoint::status is 200 (getPartnerFiltered)",
+              "id": "c9bbf23e0151c58bbb748d5fbc6bd79b",
+              "passes": 873,
+              "fails": 0
+            },
+            {
+              "fails": 0,
+              "name": "response time is less than 4000ms (getPartnerFiltered)",
+              "path": "::Load Test for Get Partner Filtered Endpoint::response time is less than 4000ms (getPartnerFiltered)",
+              "id": "237dc465569f1316d463e004d73206da",
+              "passes": 873
+            }
+          ]
+      }
+    ],
+    "checks": []
+  },
+  "options": {
+    "summaryTrendStats": [
+      "avg",
+      "min",
+      "med",
+      "max",
+      "p(90)",
+      "p(95)"
+    ],
+    "summaryTimeUnit": "",
+    "noColor": false
+  },
+  "state": {
+    "isStdOutTTY": true,
+    "isStdErrTTY": true,
+    "testRunDurationMs": 120639.054
+  },
+  "metrics": {
+    "http_req_failed": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 0,
+        "passes": 0,
+        "fails": 3492
+      }
+    },
+    "http_req_sending": {
+      "values": {
+        "p(95)": 0.5141,
+        "avg": 0.05933739977090499,
+        "min": 0,
+        "med": 0,
+        "max": 1.0643,
+        "p(90)": 0.50309
+      },
+      "type": "trend",
+      "contains": "time"
+    },
+    "get_partners_fail_rate": {
+      "contains": "default",
+      "values": {
+        "fails": 0,
+        "rate": 0,
+        "passes": 0
+      },
+      "thresholds": {
+        "rate<0.05": {
+          "ok": true
+        }
+      },
+      "type": "rate"
+    },
+    "http_reqs": {
+      "contains": "default",
+      "values": {
+        "count": 3492,
+        "rate": 28.945850321405867
+      },
+      "type": "counter"
+    },
+    "http_req_connecting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 0.0011268041237113401,
+        "min": 0,
+        "med": 0,
+        "max": 0.5271,
+        "p(90)": 0,
+        "p(95)": 0
+      }
+    },
+    "get_partner_by_id_success_rate": {
+      "contains": "default",
+      "values": {
+        "rate": 1,
+        "passes": 873,
+        "fails": 0
+      },
+      "type": "rate"
+    },
+    "get_partner_by_id_duration": {
+      "contains": "default",
+      "values": {
+        "min": 5.1074,
+        "med": 9.4951,
+        "max": 74.6826,
+        "p(90)": 15.448900000000005,
+        "p(95)": 17.60256,
+        "avg": 10.432722909507447
+      },
+      "thresholds": {
+        "p(95)<4000": {
+          "ok": true
+        }
+      },
+      "type": "trend"
+    },
+    "http_req_duration{expected_response:true}": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 10.070533734249725,
+        "min": 4.6901,
+        "med": 8.66255,
+        "max": 737.2634,
+        "p(90)": 14.911690000000002,
+        "p(95)": 16.92489
+      }
+    },
+    "data_received": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "rate": 47185.93035386368,
+        "count": 5692466
+      }
+    },
+    "group_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "max": 744.8688,
+        "p(90)": 17.421020000000002,
+        "p(95)": 19.17137,
+        "avg": 11.918240206185569,
+        "min": 5.8368,
+        "med": 10.508099999999999
+      }
+    },
+    "http_req_blocked": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(90)": 0,
+        "p(95)": 0,
+        "avg": 0.013006443298969075,
+        "min": 0,
+        "med": 0,
+        "max": 6.195
+      }
+    },
+    "vus_max": {
+      "values": {
+        "value": 10,
+        "min": 10,
+        "max": 10
+      },
+      "type": "gauge",
+      "contains": "default"
+    },
+    "iteration_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 1054.0653460481078,
+        "min": 1028.576,
+        "med": 1048.3887,
+        "max": 1837.1223,
+        "p(90)": 1071.06684,
+        "p(95)": 1076.0230000000001
+      }
+    },
+    "data_sent": {
+      "contains": "data",
+      "values": {
+        "count": 320005,
+        "rate": 2652.5821397770574
+      },
+      "type": "counter"
+    },
+    "get_partner_filtered_fail_rate": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 0,
+        "passes": 0,
+        "fails": 0
+      },
+      "thresholds": {
+        "rate<0.05": {
+          "ok": true
+        }
+      }
+    },
+    "iterations": {
+      "values": {
+        "count": 873,
+        "rate": 7.236462580351467
+      },
+      "type": "counter",
+      "contains": "default"
+    },
+    "http_req_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 10.070533734249725,
+        "min": 4.6901,
+        "med": 8.66255,
+        "max": 737.2634,
+        "p(90)": 14.911690000000002,
+        "p(95)": 16.92489
+      }
+    },
+    "get_partner_filtered_success_rate": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 1,
+        "passes": 873,
+        "fails": 0
+      }
+    },
+    "get_partner_by_id_fail_rate": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 0,
+        "passes": 0,
+        "fails": 0
+      },
+      "thresholds": {
+        "rate<0.05": {
+          "ok": true
+        }
+      }
+    },
+    "get_partner_filtered_duration": {
+      "values": {
+        "max": 56.8701,
+        "p(90)": 13.31766,
+        "p(95)": 15.34916,
+        "avg": 8.926672508591057,
+        "min": 4.6901,
+        "med": 7.8574
+      },
+      "thresholds": {
+        "p(95)<4000": {
+          "ok": true
+        }
+      },
+      "type": "trend",
+      "contains": "default"
+    },
+    "get_partners_duration": {
+      "type": "trend",
+      "contains": "default",
+      "values": {
+        "avg": 10.782798167239424,
+        "min": 5.1254,
+        "med": 8.4002,
+        "max": 737.2634,
+        "p(90)": 13.6722,
+        "p(95)": 16.37062
+      },
+      "thresholds": {
+        "p(95)<4000": {
+          "ok": true
+        }
+      }
+    },
+    "http_req_tls_handshaking": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "max": 5.0322,
+        "p(90)": 0,
+        "p(95)": 0,
+        "avg": 0.00970627147766323,
+        "min": 0,
+        "med": 0
+      }
+    },
+    "get_partners_requests": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 873,
+        "rate": 7.236462580351467
+      }
+    },
+    "get_partner_by_email_success_rate": {
+      "contains": "default",
+      "values": {
+        "passes": 873,
+        "fails": 0,
+        "rate": 1
+      },
+      "type": "rate"
+    },
+    "get_partner_by_email_fail_rate": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 0,
+        "passes": 0,
+        "fails": 0
+      },
+      "thresholds": {
+        "rate<0.05": {
+          "ok": true
+        }
+      }
+    },
+    "get_partners_success_rate": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 1,
+        "passes": 873,
+        "fails": 0
+      }
+    },
+    "get_partner_by_id_requests": {
+      "values": {
+        "rate": 7.236462580351467,
+        "count": 873
+      },
+      "type": "counter",
+      "contains": "default"
+    },
+    "get_partner_by_email_requests": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "rate": 7.236462580351467,
+        "count": 873
+      }
+    },
+    "http_req_receiving": {
+      "values": {
+        "avg": 1.1284619988545241,
+        "min": 0,
+        "med": 0.5171,
+        "max": 10.3784,
+        "p(90)": 3.7119100000000005,
+        "p(95)": 4.5488599999999995
+      },
+      "type": "trend",
+      "contains": "time"
+    },
+    "get_partner_filtered_requests": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 873,
+        "rate": 7.236462580351467
+      }
+    },
+    "http_req_waiting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 8.882734335624304,
+        "min": 4.5042,
+        "med": 8.086549999999999,
+        "max": 736.0378,
+        "p(90)": 11.77278,
+        "p(95)": 12.862354999999999
+      }
+    },
+    "get_partner_by_email_duration": {
+      "type": "trend",
+      "contains": "default",
+      "values": {
+        "p(90)": 16.169780000000003,
+        "p(95)": 17.36592,
+        "avg": 10.13994135166094,
+        "min": 5.2587,
+        "med": 8.8439,
+        "max": 65.8074
+      },
+      "thresholds": {
+        "p(95)<4000": {
+          "ok": true
+        }
+      }
+    },
+    "vus": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "value": 1,
+        "min": 1,
+        "max": 10
+      }
+    },
+    "checks": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 1,
+        "passes": 6984,
+        "fails": 0
+      }
+    }
+  }
+}
