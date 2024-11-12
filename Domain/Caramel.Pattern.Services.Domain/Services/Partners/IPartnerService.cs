@@ -12,5 +12,6 @@ namespace Caramel.Pattern.Services.Domain.Services.Partners
         Task<Partner> UpdateAsync(Partner entity, string base64Image);
         Partner UpdatePassword(Partner entity);
         Task DeleteAsync(string id);
+        Task<string> GetImageBase64(string id);
     }
 }
