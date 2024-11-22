@@ -90,6 +90,26 @@ namespace Caramel.Pattern.Services.Api.Controllers.v1
         }
 
         /// <summary>
+        /// Verifica se já existem um usuário com esse email.
+        /// </summary>
+        /// <param name="email">O ID do usuário a ser recuperado.</param>
+        /// <returns>True ou False</returns>
+        [HttpGet("/users-control/adopter/email/exists")]
+        [ProducesResponseType(typeof(CustomResponse<Adopter>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ExceptionResponse), StatusCodes.Status422UnprocessableEntity)]
+        [ProducesResponseType(typeof(ExceptionResponse), StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> VerifyExistingAdopterByEmailAsync(string email)
+        {
+            var adopter = await _service.GetSingleOrDefaultByEmailAsync(email);
+
+            var exists = adopter is not null;
+
+            var response = new CustomResponse<bool>(exists, StatusProcess.Success);
+
+            return Ok(response);
+        }
+
+        /// <summary>
         /// Cria um novo usuário.
         /// </summary>
         /// <param name="request">Dados do novo Usuário.</param>
